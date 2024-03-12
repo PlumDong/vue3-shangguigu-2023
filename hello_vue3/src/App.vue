@@ -1,9 +1,5 @@
 <template>
-    <!--html-->
-  <div class="app">
-    <h1>你好！</h1>
     <Person></Person>
-  </div>
 </template>
 
 
@@ -18,14 +14,3 @@
       }
   }
 </script>
-
-<style>
-
-.app {
-  background-color: brown;
-  box-shadow: 0 0 10px;
-  border-radius: 10px;
-  padding: 20px;
-
-}
-</style>

@@ -11,22 +11,27 @@
 <script lang="ts">
 export default {
     name: '',
-    data() {
-        return {
-            name: '张三',
-            age: 18,
-            tel: '1380000000',
+    setup(){
+        // begin 此时name，age，tel都不是响应式的
+        let name = '张三'
+        let age = 18
+        let tel = '1380000000'
+        // end
+        function setName(){
+            name = 'zhang-san'
         }
-    },
-    methods: {
-        showTel() {
-            alert(this.tel)
-        },
-        setName() {
-            this.name = 'zhang-san'
-        },
-        setAge() {
-            this.age++
+        function setAge(){
+            age+=1
+        }
+        function showTel(){
+            alert(tel)
+        }
+        return{
+            name,
+            age,
+            setName,
+            setAge,
+            showTel,
         }
     }
 }
