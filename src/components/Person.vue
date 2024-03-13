@@ -1,31 +1,51 @@
 <template>
   <div class="person">
-    <h2>姓名：{{person.name}}</h2>
-    <h2>年龄：{{person.age}}</h2>
+    <h2>姓名：{{ person.name }}</h2>
+    <h2>年龄：{{ person.age }}</h2>
+    <h2>汽车：{{ person.car.c1 }}、{{ person.car.c2 }}</h2>
     <button @click="setName">修改名字</button>
     <button @click="setAge">修改年龄</button>
-    <button @click="setPerson">修改整个人</button>
+    <button @click="setC1">修改第一台车</button>
+    <button @click="setC2">修改第二台车</button>
+    <button @click="setCar">修改所有车</button>
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
 import {reactive, ref, watch} from "vue";
 
-let person = reactive({name:'张三',age:18})
+let person = reactive({
+    name: '张三', age: 18, car: {
+        c1: '奔驰',
+        c2: '宝马',
+    }
+})
+
 function setName() {
     person.name += '~'
 }
+
 function setAge() {
     person.age += 1
 }
 
-function setPerson() {
-    Object.assign(person,{name:'李四',age:90})
+function setC1() {
+    person.car.c1 = '奥迪'
+}
+function setC2() {
+    person.car.c2 = '大众'
+}
+function setCar() {
+    person.car = {c1:'雅迪',c2:'爱玛'}
 }
 
-let stopWatch = watch(person,(newValue, oldValue)=>{
-    console.log('sum旧值',oldValue,'    新值',newValue)
+function setPerson() {
+    Object.assign(person, {name: '李四', age: 90})
+}
 
-},{deep:true})
+let stopWatch = watch(()=>person.car, (newValue, oldValue) => {
+    console.log('sum旧值', oldValue, '    新值', newValue)
+
+}, {deep: true})
 
 
 </script>
