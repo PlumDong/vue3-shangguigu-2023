@@ -11,47 +11,38 @@
       <li v-for="g in games" :key="g.id">{{ g.name }}</li>
     </ul>
     <button @click="setFirstGame">修改第一个游戏名字</button>
-    <h2>测试：{{ obj.a.b.c }}</h2>
-    <button @click="setObj">多层对象修改</button>
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
 
-import {reactive} from 'vue'
+import {reactive, ref} from 'vue'
 
 // 对象类型响应数据
-let student = reactive({name: '张三2', age: 19, tel: '1380000000'})
+let student = ref({name: '张三2', age: 19, tel: '1380000000'})
 // 数组类型响应数据
-let games = reactive([{id: '01', name: '王者'}, {id: '02', name: '原神'}, {id: '03', name: '三国'},])
-// 多层嵌套对象相应数据
-let obj = reactive({
-    a:{
-        b:{
-            c:666
-        }
-    }
-})
+let games = ref([{id: '01', name: '王者'}, {id: '02', name: '原神'}, {id: '03', name: '三国'},])
 
-console.log(games)
-// end
+let obj = reactive({x:999})
+console.log(student)
+console.log(obj)
+
+
 function setName() {
-    student.name = 'zhang-san'
+    student.value.name = 'zhang-san'
 }
 
 function setAge() {
-    student.age += 1
+    student.value.age += 1
 }
 
 function showTel() {
-    alert(student.tel)
+    alert(student.value.tel)
 }
 function setFirstGame(){
-    games[0].name = '英雄联盟'
+    games.value[0].name = '英雄联盟'
     console.log(games[0])
 }
-function setObj(){
-    obj.a.b.c = 999
-}
+
 </script>
 <style scoped>
 
