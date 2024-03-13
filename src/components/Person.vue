@@ -1,29 +1,19 @@
 <template>
   <div class="person">
-    <h2>姓名：{{ name }}</h2>
-    <h2>年龄：{{ age }}</h2>
-    <button @click="setName">修改名字</button>
-    <button @click="setAge">修改年龄</button>
+    姓：<input type="text" v-model="firstName"><br>
+    名：<input type="text" v-model="lastName"><br>
+    全名：<span>{{ fullName }}</span><br>
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
+import {computed, ref} from "vue";
 
-import {reactive, ref, toRefs} from 'vue'
+let firstName = ref('张')
+let lastName = ref('三')
 
-// 对象类型响应数据
-let student = reactive({name: '张三2', age: 19})
-
-let {name,age} = toRefs(student)
-console.log(name)
-console.log(age)
-function setName() {
-    name.value += '~'
-}
-
-function setAge() {
-    age.value += 1
-}
-
+let fullName = computed(()=>{
+    return firstName.value + '--' + lastName.value
+})
 
 </script>
 <style scoped>
