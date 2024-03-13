@@ -1,19 +1,24 @@
 <template>
   <div class="person">
-    姓：<input type="text" v-model="firstName"><br>
-    名：<input type="text" v-model="lastName"><br>
-    全名：<span>{{ fullName }}</span><br>
+    <h2>当前求和为：{{sum}}</h2>
+    <button @click="setSum">点我+1</button>
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
-import {computed, ref} from "vue";
+import {ref, watch} from "vue";
 
-let firstName = ref('张')
-let lastName = ref('三')
+let sum = ref(0)
+function setSum() {
+    sum.value += 1
+}
 
-let fullName = computed(()=>{
-    return firstName.value + '--' + lastName.value
+let stopWatch = watch(sum,(newValue, oldValue)=>{
+    console.log('sum旧值',oldValue,'    新值',newValue)
+    if (newValue>=10){
+        stopWatch()
+    }
 })
+
 
 </script>
 <style scoped>
