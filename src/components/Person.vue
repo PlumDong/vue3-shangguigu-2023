@@ -1,23 +1,31 @@
 <template>
   <div class="person">
-    <h2>当前求和为：{{sum}}</h2>
-    <button @click="setSum">点我+1</button>
+    <h2>姓名：{{person.name}}</h2>
+    <h2>年龄：{{person.age}}</h2>
+    <button @click="setName">修改名字</button>
+    <button @click="setAge">修改年龄</button>
+    <button @click="setPerson">修改整个人</button>
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
 import {ref, watch} from "vue";
 
-let sum = ref(0)
-function setSum() {
-    sum.value += 1
+let person = ref({name:'张三',age:18})
+function setName() {
+    person.value.name += '~'
+}
+function setAge() {
+    person.value.age += 1
 }
 
-let stopWatch = watch(sum,(newValue, oldValue)=>{
+function setPerson() {
+    person.value = {name:'李四',age:90}
+}
+
+let stopWatch = watch(person,(newValue, oldValue)=>{
     console.log('sum旧值',oldValue,'    新值',newValue)
-    if (newValue>=10){
-        stopWatch()
-    }
-})
+
+},{deep:true})
 
 
 </script>
