@@ -42,7 +42,7 @@ function setPerson() {
     Object.assign(person, {name: '李四', age: 90})
 }
 
-let stopWatch = watch(()=>person.car, (newValue, oldValue) => {
+let stopWatch = watch(()=>[person.name,person.car], (newValue, oldValue) => {
     console.log('sum旧值', oldValue, '    新值', newValue)
 
 }, {deep: true})
