@@ -8,18 +8,18 @@
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
-import {ref, watch} from "vue";
+import {reactive, ref, watch} from "vue";
 
-let person = ref({name:'张三',age:18})
+let person = reactive({name:'张三',age:18})
 function setName() {
-    person.value.name += '~'
+    person.name += '~'
 }
 function setAge() {
-    person.value.age += 1
+    person.age += 1
 }
 
 function setPerson() {
-    person.value = {name:'李四',age:90}
+    Object.assign(person,{name:'李四',age:90})
 }
 
 let stopWatch = watch(person,(newValue, oldValue)=>{
