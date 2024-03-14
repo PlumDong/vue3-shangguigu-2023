@@ -1,53 +1,41 @@
 <template>
   <div class="person">
-    <h2>姓名：{{ person.name }}</h2>
-    <h2>年龄：{{ person.age }}</h2>
-    <h2>汽车：{{ person.car.c1 }}、{{ person.car.c2 }}</h2>
-    <button @click="setName">修改名字</button>
-    <button @click="setAge">修改年龄</button>
-    <button @click="setC1">修改第一台车</button>
-    <button @click="setC2">修改第二台车</button>
-    <button @click="setCar">修改所有车</button>
+  <h2>当前水温：{{temp}}</h2>
+  <h2>当前水位：{{height}}</h2>
+    <button @click="setTemp">水温+10</button>
+    <button @click="setHeight">水位+10</button>
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
-import {reactive, ref, watch} from "vue";
+import {reactive, ref, watch, watchEffect} from "vue";
 
-let person = reactive({
-    name: '张三', age: 18, car: {
-        c1: '奔驰',
-        c2: '宝马',
+let temp = ref(0)
+let height = ref(0)
+
+function setTemp() {
+    temp.value+=10
+}
+
+function setHeight() {
+    height.value+=10
+}
+
+ // 1. watch 写法
+// watch([temp,height],(value)=>{
+//     let [newTemp,newHeight] = value
+//     console.log(value)
+//     if (newTemp>=60 || newHeight >= 80){
+//         console.log('给服务端发请求！ ')
+//     }
+// })
+// 2.
+// 2. watchEffect 写法，自动监视变量
+watchEffect(()=>{
+    console.log(temp.value,height.value)
+    if (temp.value>=60 || height.value >= 80){
+        console.log('给服务端发请求！ ')
     }
 })
-
-function setName() {
-    person.name += '~'
-}
-
-function setAge() {
-    person.age += 1
-}
-
-function setC1() {
-    person.car.c1 = '奥迪'
-}
-function setC2() {
-    person.car.c2 = '大众'
-}
-function setCar() {
-    person.car = {c1:'雅迪',c2:'爱玛'}
-}
-
-function setPerson() {
-    Object.assign(person, {name: '李四', age: 90})
-}
-
-let stopWatch = watch(()=>[person.name,person.car], (newValue, oldValue) => {
-    console.log('sum旧值', oldValue, '    新值', newValue)
-
-}, {deep: true})
-
-
 </script>
 <style scoped>
 
