@@ -6,7 +6,7 @@
 <script lang="ts" name='Person11' setup>
 import type {PersonInter} from "@/types";
 
-let person:PersonInter = {id:'01',name:'张三',age:18,add:''}
+let person:PersonInter = {id:'01',name:'张三',age:18}
 let personList:PersonInter[] = [
     {id:'02',name:'李四',age:20},
     {id:'03',name:'王五',age:30}
