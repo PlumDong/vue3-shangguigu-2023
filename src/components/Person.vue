@@ -1,22 +1,25 @@
 <template>
   <div class="person">
-???
+  <ul>
+    <li v-for="item in list" :key="item.id">{{item.name}} -- {{item.age}}</li>
+  </ul>
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
 import type {PersonInter} from "@/types";
 
-let person:PersonInter = {id:'01',name:'张三',age:18}
-let personList:PersonInter[] = [
-    {id:'02',name:'李四',age:20},
-    {id:'03',name:'王五',age:30}
-]
-
+// 接受list参数 + 限制类型 + 限制必要性 + 指定默认值
+let {list} = withDefaults(defineProps<{list?:PersonInter[]}>(), {
+    list:()=>[
+        {id:'99',name:'王麻子',age:50}
+    ]
+})
+console.log(list)
 </script>
 <style scoped>
 
 .person {
-  background-color: choco late;
+  background-color: chocolate;
   box-shadow: 0 0 10px;
   border-radius: 10px;
   padding: 20px;
