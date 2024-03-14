@@ -1,41 +1,27 @@
 <template>
   <div class="person">
-  <h2>当前水温：{{temp}}</h2>
-  <h2>当前水位：{{height}}</h2>
-    <button @click="setTemp">水温+10</button>
-    <button @click="setHeight">水位+10</button>
+    <h1>中国</h1>
+    <h2 ref="title2">北京</h2>
+    <h3>尚硅谷</h3>
+    <button @click="showLog">点我输出h2这个元素</button>
+
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
-import {reactive, ref, watch, watchEffect} from "vue";
+import {reactive, ref, watch, defineExpose} from "vue";
+// 创建一个title2，用于存储ref标记的内容
+let title2 = ref()
 
-let temp = ref(0)
-let height = ref(0)
-
-function setTemp() {
-    temp.value+=10
+function showLog() {
+    console.log(title2.value)
 }
 
-function setHeight() {
-    height.value+=10
-}
+let a = ref(0)
+let b = ref(1)
+let c = ref(2)
 
- // 1. watch 写法
-// watch([temp,height],(value)=>{
-//     let [newTemp,newHeight] = value
-//     console.log(value)
-//     if (newTemp>=60 || newHeight >= 80){
-//         console.log('给服务端发请求！ ')
-//     }
-// })
-// 2.
-// 2. watchEffect 写法，自动监视变量
-watchEffect(()=>{
-    console.log(temp.value,height.value)
-    if (temp.value>=60 || height.value >= 80){
-        console.log('给服务端发请求！ ')
-    }
-})
+defineExpose({a,b,c})
+
 </script>
 <style scoped>
 

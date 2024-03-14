@@ -1,16 +1,14 @@
 <template>
-    <Person></Person>
+    <Person ref="ren"></Person>
 </template>
 
 
-<script lang="ts">
-// JS或TS
-  import Person from "@/components/Person.vue";
+<script lang="ts" setup name="App">
+import Person from "@/components/Person.vue";
+import {ref} from "vue";
+let ren = ref()
 
-  export default {
-      name:'App',    //组件名
-      components:{
-          Person
-      }
-  }
+console.log(ren)
+
+
 </script>
