@@ -1,17 +1,25 @@
 <template>
-    <Person :list2="personList"></Person>
+    <Person v-if="isShow"></Person>
 </template>
 
 
 <script lang="ts" setup name="App">
 import Person from "@/components/Person.vue";
 import type {PersonInter} from "@/types";
+import {onBeforeMount, onMounted, ref} from "vue";
 
-let person:PersonInter = {id:'01',name:'张三',age:18}
-let personList:PersonInter[] = [
-    {id:'02',name:'李四',age:20},
-    {id:'03',name:'王五',age:30}
-]
+let isShow = ref(true)
+// 创建
+console.log('父创建')
+
+//挂载前
+onBeforeMount(()=>{
+  console.log('父挂载前')
+})
+//挂载完毕
+onMounted(()=>{
+  console.log('父挂载完毕')
+})
 
 
 </script>
