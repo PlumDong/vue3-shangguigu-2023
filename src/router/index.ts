@@ -1,8 +1,8 @@
 // 创建一个路由器，并暴露出去
 import { createRouter, createWebHistory } from 'vue-router';
-import Mine from "@/components/Mine.vue";
-import Home from "@/components/Home.vue";
-import About from "@/components/About.vue";
+import Mine from "@/pages/Mine.vue";
+import Home from "@/pages/Home.vue";
+import About from "@/pages/About.vue";
 
 const routes = [
     {
