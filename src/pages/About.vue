@@ -6,7 +6,7 @@
         <RouterLink
             :to="{
               name:'详情',
-              params:{
+              query:{
                 id:news.id,
                 title:news.title,
                 content:news.content,

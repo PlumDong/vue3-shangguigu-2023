@@ -21,11 +21,11 @@ const routes = [
                 name: '详情',
                 component: Detail,
                 // 第一种写法，将路由收到的所有params参数作为props传给路由组件
-                props:true,
+                // props:true,
                 // 第二种写法，函数写法，可以自己决定将什么作为props给路由组件
-                // props(route:any) {
-                //     return route.query
-                // }
+                props(route:any) {
+                    return route.query
+                }
                 // 第三种写法，对象写法，可以自己决定将什么作为props给路由组件
             }
         ]
