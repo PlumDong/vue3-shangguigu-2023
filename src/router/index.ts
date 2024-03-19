@@ -35,6 +35,10 @@ const routes = [
         name: '我的',
         component: Mine
     },
+    {
+        path: '/',
+        redirect:'/home'
+    },
 ];
 
 const router = createRouter({
