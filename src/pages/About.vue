@@ -3,20 +3,17 @@
     <!--导航区-->
     <ul>
       <li v-for="news in newsList" :key="news.id">
-        <!--第一种写法-->
-        <!--<RouterLink :to="`/about/detail?id=${news.id}&title=${news.title}&content=${news.content}`" active-class="active">{{news.title}}</RouterLink>-->
-        <!--第二种写法-->
-        <RouterLink :to="{
-          path:'/about/detail',
-          query:{
-            id:news.id,
-            title:news.title,
-            content:news.content,
-          }}"
-          active-class="active">{{ news.title }}
+        <RouterLink
+            :to="{
+              name:'详情',
+              params:{
+                id:news.id,
+                title:news.title,
+                content:news.content,
+              }
+            }"
+            active-class="active">{{ news.title }}
         </RouterLink>
-
-
       </li>
     </ul>
     <!--展示区-->
