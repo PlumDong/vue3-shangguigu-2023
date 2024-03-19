@@ -3,7 +3,20 @@
     <!--导航区-->
     <ul>
       <li v-for="news in newsList" :key="news.id">
-        <RouterLink to="/about/detail" active-class="active">{{news.title}}</RouterLink>
+        <!--第一种写法-->
+        <!--<RouterLink :to="`/about/detail?id=${news.id}&title=${news.title}&content=${news.content}`" active-class="active">{{news.title}}</RouterLink>-->
+        <!--第二种写法-->
+        <RouterLink :to="{
+          path:'/about/detail',
+          query:{
+            id:news.id,
+            title:news.title,
+            content:news.content,
+          }}"
+          active-class="active">{{ news.title }}
+        </RouterLink>
+
+
       </li>
     </ul>
     <!--展示区-->
@@ -13,7 +26,7 @@
   </div>
 </template>
 
-<script  setup lang="ts">
+<script setup lang="ts">
 import {reactive} from "vue";
 
 const newsList = reactive([
@@ -28,17 +41,18 @@ const newsList = reactive([
 
 <style scoped>
 .news {
-  background-color: #f9f9f9;
-  padding: 10px;
+  display: flex;
 }
 
 .news ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
+  width: 30%;
 }
 
 .news li {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .news a {
@@ -46,15 +60,9 @@ const newsList = reactive([
   color: #333;
 }
 
-.news a:hover {
-  text-decoration: underline;
-  color: #007bff;
-}
-
 .news-content {
-  width: 65%;
+  flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
 }
-
 </style>

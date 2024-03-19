@@ -18,6 +18,7 @@ const routes = [
         children:[
             {
                 path:'detail',
+                name:'详情',
                 component: Detail
             }
         ]

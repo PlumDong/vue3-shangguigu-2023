@@ -1,12 +1,17 @@
 <template>
   <ul class="news-list">
-    <li>编号：</li>
-    <li>标题：</li>
-    <li>内容：</li>
+    <li>编号：{{query.id}}</li>
+    <li>标题：{{query.title}}</li>
+    <li>内容：{{query.content}}</li>
   </ul>
 </template>
 
 <script setup lang="ts">
+import {useRoute} from "vue-router";
+import {toRefs} from "vue";
+
+const route = useRoute();
+const {query} = toRefs(route);
 
 </script>
 
@@ -21,15 +26,5 @@
   margin-bottom: 10px;
 }
 
-.news-list li:first-child {
-  font-weight: bold;
-}
 
-.news-list li:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-.news-list li:nth-child(even) {
-  background-color: #e9e9e9;
-}
 </style>
