@@ -3,6 +3,7 @@ import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router';
 import Mine from "@/pages/Mine.vue";
 import Home from "@/pages/Home.vue";
 import About from "@/pages/About.vue";
+import Detail from "@/pages/Detail.vue";
 
 const routes = [
     {
@@ -13,7 +14,13 @@ const routes = [
     {
         path: '/about',
         name: '关于',
-        component: About
+        component: About,
+        children:[
+            {
+                path:'detail',
+                component: Detail
+            }
+        ]
     },
     {
         path: '/mine',
@@ -23,7 +30,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHashHistory(),    // 路由器的工作模式
+    history: createWebHistory(),    // 路由器的工作模式
     routes                          // 路由规则
 });
 // history 模式  history: createWebHashHistory()   toC项目常用，例如b站，优点：没有#号，缺点：nginx 需要配置 try_files
