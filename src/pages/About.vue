@@ -3,6 +3,7 @@
     <!--导航区-->
     <ul>
       <li v-for="news in newsList" :key="news.id">
+        <button @click="showNewsDetail(news)">点击查询新闻</button>
         <RouterLink
             :to="{
               name:'详情',
@@ -25,6 +26,7 @@
 
 <script setup lang="ts">
 import {reactive} from "vue";
+import router from "@/router";
 
 const newsList = reactive([
   {id: '01', title: '十种食物', content: '西兰花'},
@@ -33,6 +35,17 @@ const newsList = reactive([
   {id: '04', title: '好消息！！好消息！！', content: '过年了'},
 ]);
 
+
+function showNewsDetail(news:any) {
+  router.replace({
+    name: '详情',
+    query: {
+      id: news.id,
+      title: news.title,
+      content: news.content,
+    }
+  })
+}
 
 </script>
 

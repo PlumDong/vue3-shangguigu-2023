@@ -7,6 +7,16 @@
 
 <script  setup lang="ts">
 
+import {onMounted} from "vue";
+import {useRouter} from "vue-router";
+let router = useRouter();
+onMounted(()=>{
+  setTimeout(()=>{
+    //在此处让路由实现跳转
+    router.push('/about')
+  },3000)
+})
+
 </script>
 
 <style scoped>
