@@ -1,24 +1,16 @@
 <template>
   <div class="app">
-    <Header></Header>
-    <div class="navigate">
-      <RouterLink replace to="/home" active-class="active"> 首页 </RouterLink>
-      <RouterLink replace :to="{name:'关于'}" active-class="active"> 关于 </RouterLink>
-      <RouterLink replace :to="{path:'/mine'}" active-class="active"> 我的 </RouterLink>
-    </div>
-    <div class="main-content">
-      <RouterView></RouterView>
-    </div>
+    <Person></Person>
+    <br>
+    <LoveTalk></LoveTalk>
   </div>
 </template>
 
 
 <script lang="ts" setup name="App">
 
-
-
-
-import Header from "@/components/Header.vue";
+import Person from "@/pages/Person.vue";
+import LoveTalk from "@/pages/LoveTalk.vue";
 </script>
 
 <style>

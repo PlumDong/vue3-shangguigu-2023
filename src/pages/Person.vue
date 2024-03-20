@@ -1,19 +1,30 @@
 <template>
   <div class="person">
     <h2>当前求和为：{{ sum }}</h2>
-    <button @click="add">点我+1</button>
-    <hr>
-    <img v-for="(dog,index) in dogList" :key="index" :src="dog" alt="">
-    <br>
-    <button @click="getDog">再来一只小狗</button>
+    <select v-model.number="n">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <button @click="add">＋</button>
+    <button @click="reduce">-</button>
+
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
-  import useDog from "@/hooks/useDog";
-  import useSum from "@/hooks/useSum";
+import {onMounted, ref} from "vue";
 
-  let {dogList,getDog} = useDog();
-  let {sum,add} = useSum();
+let sum = ref(1)
+let n = ref(1)
+
+function add() {
+  sum.value += n.value
+}
+
+function reduce() {
+  sum.value -= n.value
+}
+
 </script>
 <style scoped>
 
@@ -31,7 +42,8 @@ button {
 li {
   font-size: 20px;
 }
-img{
+
+img {
   width: 100px;
   margin-right: 10px;
 }
