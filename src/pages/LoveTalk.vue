@@ -2,26 +2,27 @@
   <div>
     <button @click="getTalkList">获取名句</button>
     <ul>
-      <li v-for="item in talkList" :key="item.id">{{ item.title }}</li>
+      <li v-for="item in loveTalkStore.talkList" :key="item.id">{{ item.title }}</li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import {onMounted, reactive} from "vue";
+import {onMounted, reactive, toRefs} from "vue";
 import axios from "axios";
 import {nanoid} from "nanoid";
+import useLoveTalkStore from "@/store/LoveTalk";
 
-let talkList:{id:string,title:string}[] = reactive([
+let loveTalkStore: { talkList: { id: string, title: string }[] } = useLoveTalkStore();
 
-])
 
 async function getTalkList() {
   // 发请求，写法：连续解构 + 重命名
-  let {data:{content:title}} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json')
-  talkList.unshift({id: nanoid(), title})
+  let {data: {content: title}} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json')
+  loveTalkStore.talkList.unshift({id: nanoid(), title})
 }
-onMounted(()=>{
+
+onMounted(() => {
   for (let i = 0; i < 3; i++) {
     getTalkList()
   }
