@@ -13,13 +13,12 @@ import axios from "axios";
 import {nanoid} from "nanoid";
 import useLoveTalkStore from "@/store/LoveTalk";
 
-let loveTalkStore: { talkList: { id: string, title: string }[] } = useLoveTalkStore();
+let loveTalkStore = useLoveTalkStore();
 
 
 async function getTalkList() {
   // 发请求，写法：连续解构 + 重命名
-  let {data: {content: title}} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json')
-  loveTalkStore.talkList.unshift({id: nanoid(), title})
+  await loveTalkStore.getATalk()
 }
 
 onMounted(() => {

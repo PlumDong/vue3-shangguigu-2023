@@ -1,6 +1,6 @@
 <template>
   <div class="person">
-    <h2>当前求和为：{{ personStore.sum }}</h2>
+    <h2>当前求和为：{{ sum }}</h2>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -12,19 +12,20 @@
   </div>
 </template>
 <script lang="ts" name='Person11' setup>
-import {onMounted, ref, toRefs} from "vue";
+import {onMounted, type Ref, ref, toRefs} from "vue";
 import usePersonStore from "@/store/Person";
+import {storeToRefs} from "pinia";
 
-let personStore:{sum:number} = usePersonStore()
+const personStore = usePersonStore()
+let {sum} = storeToRefs(personStore);
 let n = ref(1)
 
 function add() {
-  personStore.sum += n.value
+  personStore.inc(n.value)
 }
 
 function reduce() {
-  let sum = personStore.sum;
-  personStore.sum -= n.value
+  personStore.inc(-n.value)
 }
 
 </script>
