@@ -17,7 +17,7 @@ import usePersonStore from "@/store/Person";
 import {storeToRefs} from "pinia";
 
 const personStore = usePersonStore()
-let {sum} = storeToRefs(personStore);
+let {sum,bigSum,upperSchool} = storeToRefs(personStore);
 let n = ref(1)
 
 function add() {
@@ -27,6 +27,10 @@ function add() {
 function reduce() {
   personStore.inc(-n.value)
 }
+
+console.log(sum)
+console.log(bigSum)
+console.log(upperSchool)
 
 </script>
 <style scoped>

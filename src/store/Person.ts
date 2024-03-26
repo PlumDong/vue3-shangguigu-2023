@@ -8,9 +8,14 @@ const usePersonStore = defineStore('PersonStore', {
     },
     state(){
         return  {
-            sum:6
+            sum:6,
+            school:'shangguigu',
         }
     },
+    getters:{
+        bigSum: state => state.sum*10,
+        upperSchool: state => state.school.toUpperCase()
+    }
 });
 
 export default usePersonStore
