@@ -18,6 +18,13 @@ import {storeToRefs} from "pinia";
 
 const personStore = usePersonStore()
 let {sum,bigSum,upperSchool} = storeToRefs(personStore);
+personStore.$subscribe((mutation, state)=>{
+  console.log(mutation)
+  console.log(state)
+  localStorage.setItem('personStore',JSON.stringify(state))
+})
+
+
 let n = ref(1)
 
 function add() {

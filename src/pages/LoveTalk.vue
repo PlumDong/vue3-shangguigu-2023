@@ -14,7 +14,9 @@ import {nanoid} from "nanoid";
 import useLoveTalkStore from "@/store/LoveTalk";
 
 let loveTalkStore = useLoveTalkStore();
-
+loveTalkStore.$subscribe((mutation, state)=>{
+  localStorage.setItem('loveTalkStore',JSON.stringify(state.talkList))
+})
 
 async function getTalkList() {
   // 发请求，写法：连续解构 + 重命名
@@ -22,9 +24,9 @@ async function getTalkList() {
 }
 
 onMounted(() => {
-  for (let i = 0; i < 3; i++) {
-    getTalkList()
-  }
+  // for (let i = 0; i < 3; i++) {
+  //   getTalkList()
+  // }
 })
 
 </script>

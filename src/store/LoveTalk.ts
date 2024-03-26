@@ -12,7 +12,7 @@ const useLoveTalkStore = defineStore('LoveTalkStore', {
     },
     state():{talkList:{id:string,title:string}[]} {
         return {
-            talkList: []
+            talkList: JSON.parse(localStorage.getItem('loveTalkStore')??'[]' )
         }
     },
 });
