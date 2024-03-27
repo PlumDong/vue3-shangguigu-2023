@@ -12,6 +12,7 @@
 	let toy = ref('奥特曼')
 	// 声明事件
 	const emit =  defineEmits(['send-toy'])
+  console.log(emit)
 </script>
 
 <style scoped>
