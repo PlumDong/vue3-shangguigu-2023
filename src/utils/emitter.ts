@@ -1,7 +1,8 @@
 // 引入mitt
-import mitt from 'mitt'
 
 // 调用mitt得到emitter，emitter能：绑定事件、触发事件
+import mitt from "mitt";
+
 const emitter = mitt()
 
 /* // 绑定事件
