@@ -1,20 +1,26 @@
 <template>
-  <input 
-    type="text" 
-    :value="ming"
-    @input="emit('update:ming',(<HTMLInputElement>$event.target).value)"
-  >
+  <input
+    type="text"
+    :value="modelValue.username"
+    @input="(e)=>{
+      modelValue.username = (<HTMLInputElement>e.target).value
+      emit('update:modelValue',modelValue)
+    }"  >
   <br>
-  <input 
-    type="text" 
-    :value="mima"
-    @input="emit('update:mima',(<HTMLInputElement>$event.target).value)"
+  <input
+    type="text"
+    :value="modelValue.password"
+    @input="(e)=>{
+      modelValue.password = (<HTMLInputElement>e.target).value
+      emit('update:modelValue',modelValue)
+    }"
   >
 </template>
 
 <script setup lang="ts" name="AtguiguInput">
-  defineProps(['ming','mima'])
-  const emit = defineEmits(['update:ming','update:mima'])
+  let {modelValue} = defineProps(['modelValue']);
+  const emit = defineEmits(['update:modelValue'])
+  console.log(modelValue)
 </script>
 
 <style scoped>
