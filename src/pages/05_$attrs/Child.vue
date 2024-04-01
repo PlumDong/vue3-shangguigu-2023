@@ -7,6 +7,8 @@
 
 <script setup lang="ts" name="Child">
 	import GrandChild from './GrandChild.vue'
+  let props = defineProps(['a','b','c','d','x','y','updateA']);
+  console.log(props)
 </script>
 
 <style scoped>
