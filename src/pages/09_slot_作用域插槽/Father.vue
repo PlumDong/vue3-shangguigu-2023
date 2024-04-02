@@ -8,7 +8,9 @@
             <li v-for="y in params.youxi" :key="y.id">
               {{ y.name }}
             </li>
+            <li >11111x:{{params.x}}</li>
           </ul>
+
         </template>
       </Game>
 
@@ -16,15 +18,16 @@
         <template v-slot="params">
           <ol>
             <li v-for="item in params.youxi" :key="item.id">
-              {{ item.name }}
+              { { item.name }}
             </li>
           </ol>
         </template>
       </Game>
 
       <Game>
-        <template #default="{youxi}">
+        <template #default="{youxi,x}">
           <h3 v-for="g in youxi" :key="g.id">{{ g.name }}</h3>
+          <h3 >{{x}}</h3>
         </template>
       </Game>
 
